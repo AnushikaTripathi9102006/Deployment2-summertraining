@@ -17,12 +17,12 @@ from sklearn.linear_model import LogisticRegression
 # Page Configuration
 # -----------------------------------
 st.set_page_config(
-    page_title="Life Insuarance Prediction",
+    page_title="Life Insurance Prediction",
     page_icon="🏠",
     layout="centered"
 )
 
-st.title("🏠 Life Insuarance Prediction")
+st.title("🏠 Life Insurance Prediction")
 st.write("Predict Life Insuarance using Logistic Regression")
 
 # -----------------------------------
@@ -37,13 +37,11 @@ st.dataframe(df)
 # Train Model
 # -----------------------------------
 X_train, X_test, y_train, y_test = train_test_split(df[['age']],df.bought_insurance,train_size=0.8)
-X = df.drop("insuarance", axis=1)
-
-
-y = df["insuarance"]
+X = df[["age"]]
+y = df["bought_insurance"]
 
 model = LogisticRegression()
-model.fit(X, y)
+model.fit(X_train, y_train)
 
 # -----------------------------------
 # User Input
@@ -61,11 +59,14 @@ age = st.number_input(
 # -----------------------------------
 # Prediction
 # -----------------------------------
-if st.button("Predict insuarance  "):
+if st.button("Predict insurance  "):
 
     prediction = model.predict([[age]])
 
-    st.success(f"Predicted insuarance: ₹ {prediction[0]:,.2f}")
+    if prediction == 1:
+    st.success("Person will buy insurance.")
+else:
+    st.error("Person will not buy insurance.")
 
 # -----------------------------------
 # Model Information
