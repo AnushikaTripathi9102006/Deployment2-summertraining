@@ -64,9 +64,9 @@ if st.button("Predict insurance  "):
     prediction = model.predict([[age]])
 
     if prediction == 1:
-    st.success("Person will buy insurance.")
-else:
-    st.error("Person will not buy insurance.")
+        st.success("Person will buy insurance.")
+    else:
+        st.error("Person will not buy insurance.")
 
 # -----------------------------------
 # Model Information
