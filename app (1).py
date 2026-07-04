@@ -23,7 +23,7 @@ st.set_page_config(
 )
 
 st.title("🏠 Life Insurance Prediction")
-st.write("Predict Life Insuarance using Logistic Regression")
+st.write("Predict Life Insurance using Logistic Regression")
 
 # -----------------------------------
 # Load Dataset
